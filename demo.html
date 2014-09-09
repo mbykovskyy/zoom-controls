@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../platform/platform.js"></script>
+  <link rel="import" href="zoom-controls.html">
+  <style>
+  	#box {
+      display: inline-block;
+  		width: 10px;
+  		height: 10px;
+  		border: 1px solid black;
+  	}
+  	#zoom_controls {
+      vertical-align: top;
+      display: inline-block;
+  	}
+  </style>
+</head>
+<body unresolved>
+  <zoom-controls id="zoom_controls"></zoom-controls>
+	<div id="box"></div>
+
+  <script>
+    document.addEventListener('polymer-ready', function() {
+      var zoomControls = document.getElementById('zoom_controls');
+      var box = document.getElementById('box');
+
+      box.style.transformOrigin = '0 0';
+      box.style.transform = 'scale(' + zoomControls.zoom +')';
+
+      zoomControls.addEventListener('zoom', function() {
+        box.style.transform = 'scale(' + zoomControls.zoom +')';
+      });
+    });
+  </script>
+</body>
+</html>

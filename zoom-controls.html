@@ -1,0 +1,132 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-icon-button/core-icon-button.html">
+
+<!--
+A Polymer component providing generic zooming in and out controls.
+
+Example:
+
+    <zoom-controls id="zoom_controls"></zoom-controls>
+    <div id="box"></div>
+
+    <script>
+      document.addEventListener('polymer-ready', function() {
+        var zoomControls = document.getElementById('zoom_controls');
+        var box = document.getElementById('box');
+
+        box.style.transformOrigin = '0 0';
+        box.style.transform = 'scale(' + zoomControls.zoom +')';
+
+        zoomControls.addEventListener('zoom', function() {
+          box.style.transform = 'scale(' + zoomControls.zoom +')';
+        });
+      });
+    </script>
+
+
+@element zoom-controls
+@blurb A Polymer component providing generic zooming in and out controls
+@homepage http://mbykovskyy.github.io/zoom-controls
+@demo http://mbykovskyy.github.io/zoom-controls/demo.html
+-->
+<!--
+Fired when zooming in or out.
+
+@event zoom
+-->
+<polymer-element name="zoom-controls" attributes="zoom maxZoom minZoom">
+  <template>
+    <style>
+      .control {
+        color: #fff;
+        background-color: #4285f4;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+      .control:hover {
+        background-color: #3367d6;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+      .control:active {
+        background: #2a56c6;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+
+    <div vertical layout>
+      <template if="{{zoomInDisabled}}">
+        <core-icon-button id="zoom_in" class="control" icon="add" disabled></core-icon-button>
+      </template>
+      <template if="{{!zoomInDisabled}}">
+        <core-icon-button id="zoom_in" class="control" icon="add" on-tap="{{zoomIn}}"></core-icon-button>
+      </template>
+
+      <template if="{{zoomOutDisabled}}">
+        <core-icon-button id="zoom_out" class="control" icon="remove" disabled></core-icon-button>
+      </template>
+      <template if="{{!zoomOutDisabled}}">
+        <core-icon-button id="zoom_out" class="control" icon="remove" on-tap="{{zoomOut}}"></core-icon-button>
+      </template>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      publish: {
+        /**
+         * Current zoom level.
+         *
+         * @attribute zoom
+         * @type Number
+         * @default 10
+         */
+        zoom: 10,
+
+        /**
+         * Maximum zoom level.
+         *
+         * @attribute maxZoom
+         * @type Number
+         * @default 21
+         */
+        maxZoom: 21,
+
+        /**
+         * Minimum zoom level.
+         *
+         * @attribute minZoom
+         * @type Number
+         * @default 0
+         */
+        minZoom: 0
+      },
+
+      computed: {
+        zoomInDisabled: 'zoom >= maxZoom',
+        zoomOutDisabled: 'zoom <= minZoom'
+      },
+
+      /**
+       * Increases zoom level by one if `maxZoom` isn't reached.
+       *
+       * @method zoomIn
+       */
+      zoomIn: function() {
+        if (this.zoom < this.maxZoom) {
+          ++this.zoom;
+          this.fire('zoom');
+        }
+      },
+
+      /**
+       * Decreases zoom level by one if `minZoom` isn't reached.
+       *
+       * @method zoomOut
+       */
+      zoomOut: function() {
+        if (this.zoom > this.minZoom) {
+          --this.zoom;
+          this.fire('zoom');
+        }
+      }
+    });
+  </script>
+</polymer-element>

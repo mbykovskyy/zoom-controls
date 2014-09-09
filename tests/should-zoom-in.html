@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>Should Zoom In</title>
+  <script src="../../platform/platform.js"></script>
+  <link rel="import" href="../../polymer-test-tools/tools.html">
+  <script src="../../polymer-test-tools/htmltest.js"></script>
+  <link rel="import" href="../zoom-controls.html">
+</head>
+<body>
+  <zoom-controls></zoom-controls>
+
+  <script>
+    document.addEventListener('polymer-ready', function() {
+      var zoomControls = document.querySelector('zoom-controls');
+      zoomControls.addEventListener('zoom', function() {
+        assert.equal(11, zoomControls.zoom);
+        done();
+      });
+
+      zoomControls.zoomIn();
+    });
+  </script>
+</body>
+</html>
