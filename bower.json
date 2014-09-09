@@ -1,6 +1,6 @@
 {
   "name": "zoom-controls",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A Polymer component providing generic zooming in and out controls.",
   "homepage": "https://github.com/mbykovskyy/zoom-controls",
   "author": "Maksym Bykovskyy",
