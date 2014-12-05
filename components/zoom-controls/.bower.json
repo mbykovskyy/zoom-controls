@@ -1,0 +1,36 @@
+{
+  "name": "zoom-controls",
+  "description": "A Polymer component providing generic zooming in and out controls.",
+  "homepage": "https://github.com/mbykovskyy/zoom-controls",
+  "author": "Maksym Bykovskyy",
+  "license": "MIT",
+  "main": "zoom-controls.html",
+  "keywords": [
+    "zoom-controls",
+    "web-component",
+    "web-components",
+    "polymer",
+    "zoom"
+  ],
+  "ignore": [
+    "**/.*",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.1",
+    "core-icon-button": "Polymer/core-icon-button#~0.5.1"
+  },
+  "devDependencies": {
+    "polymer-test-tools": "Polymer/polymer-test-tools#~0.5.1"
+  },
+  "_release": "5bc59fc012",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "5bc59fc012fdf4e7ff0c5884b2b55df58ab5a9f3"
+  },
+  "_source": "git://github.com/mbykovskyy/zoom-controls.git",
+  "_target": "master",
+  "_originalSource": "mbykovskyy/zoom-controls",
+  "_direct": true
+}

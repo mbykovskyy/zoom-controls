@@ -1,0 +1,7 @@
+{
+  "name": "zoom-controls#gh-pages",
+  "private": true,
+  "dependencies": {
+    "zoom-controls": "mbykovskyy/zoom-controls#master"
+  }
+}
